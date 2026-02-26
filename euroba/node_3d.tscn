@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bnpcxbieyarvj"]
+
+[sub_resource type="Environment" id="Environment_4xowi"]
+background_mode = 1
+
+[node name="Node3D" type="Node3D" unique_id=1593736269]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=714435028]
+environment = SubResource("Environment_4xowi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=163777072]
+transform = Transform3D(0.50719243, 0.7864277, 0.3525441, -0.86183286, 0.46281615, 0.20747375, 0, -0.4090632, 0.91250604, -2.5134141, -0.5120486, 1.6918389)
