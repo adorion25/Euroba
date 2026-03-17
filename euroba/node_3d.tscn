@@ -8,18 +8,63 @@ background_mode = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
 albedo_color = Color(0.85906833, 0.65784353, 0.30959874, 1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_4xowi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a202f"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(0, 0.78431374, 0.7882353, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r3fl7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jka67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
+albedo_color = Color(6.3532593e-06, 0.7851083, 0.78734803, 1)
+
 [node name="Node3D" type="Node3D" unique_id=1593736269]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=714435028]
 environment = SubResource("Environment_4xowi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=163777072]
-transform = Transform3D(0.50719243, 0.7864277, 0.3525441, -0.86183286, 0.46281615, 0.20747375, 0, -0.4090632, 0.91250604, -2.5134141, -0.5120486, 1.6918389)
+transform = Transform3D(0.07897516, -0.28161877, 0.95627075, -0.861833, 0.46281624, 0.20747375, -0.50100607, -0.84053093, -0.2061573, 8.801237, 1.5151159, 4.5821605)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1348569142]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1026225519]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 14.356728, 9.666228, -1.7310572)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=802058248]
+[node name="Jupiter" type="RigidBody3D" parent="." unique_id=1348569142]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jupiter" unique_id=802058248]
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1807276950]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Jupiter" unique_id=1807276950]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 1" unique_id=1391428646]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Europe 1" unique_id=737303604]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_noarx")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
+
+[node name="Europe 2" type="RigidBody3D" parent="." unique_id=1773264772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 2" unique_id=1569230407]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_r3fl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Europe 2" unique_id=676462935]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_jka67")
+surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
