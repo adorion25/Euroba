@@ -30,10 +30,10 @@ albedo_color = Color(6.3532593e-06, 0.7851083, 0.78734803, 1)
 environment = SubResource("Environment_4xowi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=163777072]
-transform = Transform3D(0.07897516, -0.28161877, 0.95627075, -0.861833, 0.46281624, 0.20747375, -0.50100607, -0.84053093, -0.2061573, 8.801237, 1.5151159, 4.5821605)
+transform = Transform3D(0.5070872, 0.7779335, 0.3710556, -0.8618328, 0.46281612, 0.20747374, -0.0103297755, -0.42499524, 0.9051366, 8.801237, 1.5151159, 4.5821605)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1026225519]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 14.356728, 9.666228, -1.7310572)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 10)
 
 [node name="Jupiter" type="RigidBody3D" parent="." unique_id=1348569142]
 
