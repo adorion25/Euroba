@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bnpcxbieyarvj"]
 
+[ext_resource type="Script" uid="uid://bl7lqsf2un6ea" path="res://Lune.gd" id="1_a202f"]
+
 [sub_resource type="Environment" id="Environment_4xowi"]
 background_mode = 1
 
@@ -47,6 +49,7 @@ mesh = SubResource("SphereMesh_4xowi")
 
 [node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("1_a202f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 1" unique_id=1391428646]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
