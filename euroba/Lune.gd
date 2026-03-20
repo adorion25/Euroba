@@ -72,7 +72,8 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 func appliquer_euler(temps_dernier_ecran : float) -> void:
 	"""
 	Applique la méthode d'Euler pour déterminer la position et la vitesse selon
-	le temps de la simulation.
+	le temps de la simulation. Toutes les forces en jeu sur l'objet y sont calculées 
+	pour simuler la position future.
 	
 	Paramètre:
 	temps_dernier_ecran -- le temps écoulé depuis le dernier écran.
