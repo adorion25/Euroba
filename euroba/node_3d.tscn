@@ -17,7 +17,7 @@ albedo_color = Color(0.85906833, 0.65784353, 0.30959874, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_noarx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
-albedo_color = Color(0, 0.78431374, 0.7882353, 1)
+albedo_color = Color(1, 0.42352942, 0.42352942, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r3fl7"]
 
@@ -35,7 +35,7 @@ environment = SubResource("Environment_4xowi")
 transform = Transform3D(0.5070872, 0.7779335, 0.3710556, -0.8618328, 0.46281612, 0.20747374, -0.0103297755, -0.42499524, 0.9051366, 8.801237, 1.5151159, 4.5821605)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1026225519]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 10)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25, 0)
 
 [node name="Jupiter" type="RigidBody3D" parent="." unique_id=1348569142]
 
@@ -47,9 +47,23 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052]
+[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052 node_paths=PackedStringArray("europe_1", "europe_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 script = ExtResource("1_a202f")
+min_distance_simulee = 5.0
+max_distance_simulee = 15.0
+min_distance_reelle = 600000000.0
+max_distance_reelle = 700000000.0
+masse_centre_rotation = 1.989e+27
+masse_corps = 4.8e+22
+periode_relative = 8.0
+rayon_initial_1 = 652377000.0
+vitesse_initiale_1 = 10664.75
+rayon_initial_2 = 677347000.0
+vitesse_initiale_2 = 17741.25
+etapes_calcul_par_ecran = 1000
+europe_1 = NodePath(".")
+europe_2 = NodePath("../Europe 2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 1" unique_id=1391428646]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

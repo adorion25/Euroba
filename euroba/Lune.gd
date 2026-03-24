@@ -1,5 +1,11 @@
 extends RigidBody3D
-class_name Lune
+
+@export_group("Paramètre de conversion simulation")
+@export var min_distance_simulee : float
+@export var max_distance_simulee : float
+@export var min_distance_reelle : float
+@export var max_distance_reelle : float
+
 @export_group("Simulation gravitationnelle")
 @export var masse_centre_rotation : float
 @export var masse_corps : float
@@ -13,21 +19,21 @@ class_name Lune
 @export var rayon_initial_2 : float
 @export var vitesse_initiale_2 : float
 
-@export_group("Paramètres ressort")
-@export var elasticite : float
-@export var distance_equilibre : float
-@export var coeff_dissipation : float
-
 @export_group("Paramètres d'Euler")
 @export var etapes_calcul_par_ecran : int
 
+var elasticite : float = 1e14
+var distance_equilibre : float = 24.97e6
+var coeff_dissipation : float = 4e16
 var G : float = 6.673e-11
 var r_1 : Vector3
 var v_1 : Vector3
 var r_2 : Vector3
 var v_2 : Vector3
-var periode : float
-var distance : float = distance_equilibre
+var periode : float = 299.819e3
+@export var europe_1 : RigidBody3D
+@export var europe_2 : RigidBody3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -35,46 +41,56 @@ func _ready() -> void:
 	v_1 = vitesse_initiale_1 * Vector3(0, 0, 1)
 	r_2 = rayon_initial_2 * Vector3(1, 0, 0)
 	v_2 = vitesse_initiale_2 * Vector3(0, 0, 1)
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	appliquer_euler(delta)
 
-func force_gravitationnelle(r_i: Vector3) -> Vector3:
-	"""
-	Applique la formule de la force gravitationnelle sur un des points d'Europe
+	europe_1.position = conv_position_reelle_a_simulee(r_1)
+	europe_2.position = conv_position_reelle_a_simulee(r_2)
+	
+func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
+	"""Effectue la conversion d'une position réelle à une position de l'espace 
+	de la simulation
 	
 	Paramètres:
-	r_i -- Vecteur position du point selon Jupiter
+	position_reelle -- la position réelle à convertir
 	
-	Retour:
-	Vecteur correspondant à la force gravitationnelle exercée par Jupiter sur le point
+	Retour :
+	la position dans le monde de la simulation à utiliser
 	"""
-	var force_g = -1 * G * (masse_corps/2 * masse_centre_rotation) / r_i.length()**3 * r_i
-	return force_g
+	
+	var distance_relle = position_reelle.length()
+	var ratio_distance = inverse_lerp(min_distance_reelle, max_distance_reelle, 
+		distance_relle)
+	var facteur_distance_simulee = lerp (min_distance_simulee, max_distance_simulee,
+		ratio_distance)
+	
+	return position_reelle.normalized() * facteur_distance_simulee
 
-func force_ressort(r_1: Vector3, r_2: Vector3) -> Vector3:
-	"""
-	Applique la formule de la force du ressort sur un point de la lune selon la distance entre les deux points
-	
-	Paramètres:
-	r_1 -- Vecteur position du point selon Jupiter
-	r_2 -- Vecteur position du point selon Jupiter
-	
-	Retour:
-	Vecteur correspondant à la force de ressort exercée par un point sur l'autre
-	"""
-	var k = elasticite
-	var r_21 = r_2 - r_1
-	var F_res = k * (r_21.length() - distance) * (r_21 / r_21.length())
-	return F_res
-	
 func appliquer_euler(temps_dernier_ecran : float) -> void:
 	"""
 	Applique la méthode d'Euler pour déterminer la position et la vitesse selon
-	le temps de la simulation.
+	le temps de la simulation. Toutes les forces en jeu sur l'objet y sont calculées 
+	pour simuler la position future.
 	
 	Paramètre:
 	temps_dernier_ecran -- le temps écoulé depuis le dernier écran.
 	"""
-	pass
+	var nb_periode = temps_dernier_ecran * periode / periode_relative
+	var h = nb_periode / etapes_calcul_par_ecran
+	for i in range(etapes_calcul_par_ecran):
+		var force_gravitationnelle_1 = -G * (masse_corps / 2 * masse_centre_rotation) / r_1.length()**3 * r_1
+		var force_gravitationnelle_2 = -G * (masse_corps / 2 * masse_centre_rotation) / r_2.length()**3 * r_2
+		var force_ressort = elasticite * ((r_2 - r_1).length() - distance_equilibre) * (r_2 - r_1).normalized()
+		var force_frottement = coeff_dissipation * (v_2 - v_1)
+		
+		var a_1 = (force_gravitationnelle_1 + force_ressort + force_frottement) / (masse_corps / 2)
+		var a_2 = (force_gravitationnelle_2 - force_ressort - force_frottement) / (masse_corps / 2)
+		v_2 += h * a_2
+		v_1 += h * a_1
+		r_1 += h * v_1
+		r_2 += h * v_2
+		
+		
