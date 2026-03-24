@@ -34,6 +34,8 @@ var periode : float = 299.819e3
 @export var europe_1 : RigidBody3D
 @export var europe_2 : RigidBody3D
 
+var pause : bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -41,10 +43,13 @@ func _ready() -> void:
 	v_1 = vitesse_initiale_1 * Vector3(0, 0, 1)
 	r_2 = rayon_initial_2 * Vector3(1, 0, 0)
 	v_2 = vitesse_initiale_2 * Vector3(0, 0, 1)
+	pause = false
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if pause :
+		return
 	appliquer_euler(delta)
 
 	europe_1.position = conv_position_reelle_a_simulee(r_1)
@@ -94,3 +99,9 @@ func appliquer_euler(temps_dernier_ecran : float) -> void:
 		r_2 += h * v_2
 		
 		
+func mettre_en_pause(mode_pause: bool) -> void:
+	"""Change le mode de la simulation (pause/"play")
+	
+	Parametre :
+	mode_pause -- mode de pause de la simualtion"""
+	pause = mode_pause

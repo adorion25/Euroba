@@ -1,58 +1,47 @@
 [gd_scene format=3 uid="uid://sih1ldeg6fm2"]
 
+[ext_resource type="Script" uid="uid://d03a04mh24msu" path="res://interface.gd" id="1_kyn48"]
+[ext_resource type="Script" uid="uid://blopcvwejs7mq" path="res://BoutonPause.gd" id="2_oi7g3"]
+
 [node name="Interface" type="Control" unique_id=1115889947]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_kyn48")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=136333469]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1837051428]
 layout_mode = 0
-offset_right = 509.0
-offset_bottom = 40.0
+offset_right = 395.0
+offset_bottom = 35.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1837051428]
+[node name="PanelContainer Titre" type="PanelContainer" parent="VBoxContainer" unique_id=1879963799]
 layout_mode = 2
 
-[node name="PanelContainer Titre" type="PanelContainer" parent="HBoxContainer/VBoxContainer" unique_id=1879963799]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer Titre" unique_id=141493367]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer Titre" unique_id=141493367]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer Titre/MarginContainer" unique_id=235252506]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer Titre/MarginContainer" unique_id=235252506]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=585586591]
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=585586591]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Synchronisation orbitale d'Europa"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=10007798]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=10007798]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335]
+[node name="Button" type="Button" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335]
 layout_mode = 2
 text = "Pause"
+script = ExtResource("2_oi7g3")
 
-[node name="PanelContainer Données" type="PanelContainer" parent="HBoxContainer/VBoxContainer" unique_id=1098302464]
+[node name="PanelContainer Données" type="PanelContainer" parent="VBoxContainer" unique_id=1098302464]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer Données" unique_id=1230213573]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer Données" unique_id=1230213573]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/PanelContainer Données/MarginContainer" unique_id=752489414]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer Données/MarginContainer" unique_id=752489414]
 layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1142054567]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1272762583]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=1068914891]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=1850448208]
-layout_mode = 2
-text = "Temps"
