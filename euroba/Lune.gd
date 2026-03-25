@@ -37,6 +37,8 @@ var periode : float = 299.819e3
 
 var pause : bool
 
+var echelle_temps : float = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -51,7 +53,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if pause :
 		return
-	appliquer_euler(delta)
+	appliquer_euler(delta*echelle_temps)
 
 	europe_1.position = conv_position_reelle_a_simulee(r_1)
 	europe_2.position = conv_position_reelle_a_simulee(r_2)

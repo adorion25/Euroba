@@ -10,6 +10,8 @@ class_name Interface
 @export var rayon_2 : Label
 @export var vitesse_2 : Label
 
+@export var vitesse_simulation : Label
+
 
 func _process(delta:float) -> void:
 	rayon_1.text = format_scientifique(lune.r_1.length())
@@ -38,3 +40,16 @@ func format_scientifique(valeur : float) -> String:
 	var nombre_decimales = int(log(valeur) / log(10))
 	var nombre_presente = valeur / 10**nombre_decimales
 	return "%.3f" % nombre_presente + "e" + "%s" % nombre_decimales
+
+
+func _on_h_slider_value_changed(valeur: float) -> void:
+	"""Modifie la l'échelle de temps de la simulation lorsque le slider est utilisé
+	
+	Parametre:
+	valeur -- la valeur du multiplicateur de temps
+	
+	Retour:
+	une chaîne de caractères représentant ce nombre
+	"""
+	lune.echelle_temps = valeur
+	vitesse_simulation.text = "x" + "%.1f" % valeur
