@@ -10,6 +10,9 @@ class_name Interface
 @export var rayon_2 : Label
 @export var vitesse_2 : Label
 
+@export var distance : Label
+@export var point : Label
+
 @export var vitesse_simulation : Label
 
 
@@ -18,7 +21,12 @@ func _process(delta:float) -> void:
 	vitesse_1.text = format_scientifique(lune.v_1.length())
 	rayon_2.text = format_scientifique(lune.r_2.length())
 	vitesse_2.text = format_scientifique(lune.v_2.length())
-
+	distance.text = format_scientifique(abs(lune.r_1.length() - lune.r_2.length()))
+	
+	if lune.r_1.length() < lune.r_2.length():
+		point.text = "Point rouge"
+	else:
+		point.text = "Point bleu"
 
 func changer_mode_pause(mode_pause : bool) -> void:
 	"""Change l'état de pause à chacun des astres

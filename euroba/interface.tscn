@@ -3,16 +3,18 @@
 [ext_resource type="Script" uid="uid://d03a04mh24msu" path="res://interface.gd" id="1_kyn48"]
 [ext_resource type="Script" uid="uid://blopcvwejs7mq" path="res://BoutonPause.gd" id="2_oi7g3"]
 
-[node name="Interface" type="Control" unique_id=1115889947 node_paths=PackedStringArray("rayon_1", "vitesse_1", "rayon_2", "vitesse_2", "vitesse_simulation")]
+[node name="Interface" type="Control" unique_id=1115889947 node_paths=PackedStringArray("rayon_1", "vitesse_1", "rayon_2", "vitesse_2", "distance", "point", "vitesse_simulation")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kyn48")
-rayon_1 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/rayon_1")
-vitesse_1 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/vitesse_1")
-rayon_2 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/rayon_2")
-vitesse_2 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/vitesse_2")
+rayon_1 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col/rayon_1")
+vitesse_1 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col/vitesse_1")
+rayon_2 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col/rayon_2")
+vitesse_2 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col/vitesse_2")
+distance = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer2col/distance")
+point = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer2col/point")
 vitesse_simulation = NodePath("VBoxContainer/PanelContainer/MarginContainer/vitesse_simulation")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1837051428]
@@ -49,58 +51,88 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer Données" unique_id=1230213573]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer Données/MarginContainer" unique_id=752489414]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer Données/MarginContainer" unique_id=730473582]
+layout_mode = 2
+
+[node name="GridContainer3col" type="GridContainer" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer" unique_id=752489414]
 layout_mode = 2
 columns = 3
 
-[node name="Europa" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=497748557]
+[node name="Europa" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=497748557]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Europa"
 
-[node name="Rayon" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=196952794]
+[node name="Rayon" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=196952794]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Rayon"
 
-[node name="Vitesse" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=1353402173]
+[node name="Vitesse" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=1353402173]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Vitesse"
 
-[node name="Point 1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=452391967]
+[node name="Point 1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=452391967]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Point rouge"
 
-[node name="rayon_1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=2109086870]
+[node name="rayon_1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=2109086870]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "rayon1"
 
-[node name="vitesse_1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=1424470352]
+[node name="vitesse_1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=1424470352]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "vitesse1"
 
-[node name="Point 2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=957746302]
+[node name="Point 2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=957746302]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Point bleu"
 
-[node name="rayon_2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=1228715288]
+[node name="rayon_2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=1228715288]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "rayon2"
 
-[node name="vitesse_2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=919499037]
+[node name="vitesse_2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer3col" unique_id=919499037]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "vitesse2"
 
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer" unique_id=1028080591]
+layout_mode = 2
+
+[node name="GridContainer2col" type="GridContainer" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer" unique_id=1329253529]
+layout_mode = 2
+columns = 2
+
+[node name="distance_r-b" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer2col" unique_id=1102370858]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Distance rouge-bleu :"
+
+[node name="distance" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer2col" unique_id=1483751289]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "distance"
+
+[node name="Point_près" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer2col" unique_id=1442857680]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Point près de Jupiter :"
+
+[node name="point" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/VBoxContainer/GridContainer2col" unique_id=1282590401]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "point"
+
 [node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=824075001]
 layout_mode = 2
-min_value = 1.0
+min_value = 0.1
 max_value = 10.0
 step = 0.01
 value = 1.0
