@@ -2,7 +2,7 @@ extends Control
 class_name Interface
 
 @export_group("Simulation")
-@export var simulation : RigidBody3D
+@export var lune : Lune
 
 @export_group("Textes")
 @export var rayon_1 : Label
@@ -12,10 +12,10 @@ class_name Interface
 
 
 func _process(delta:float) -> void:
-	rayon_1.text = format_scientifique(simulation.r_1.length())
-	vitesse_1.text = format_scientifique(simulation.v_1.length())
-	rayon_2.text = format_scientifique(simulation.r_2.length())
-	vitesse_2.text = format_scientifique(simulation.v_2.length())
+	rayon_1.text = format_scientifique(lune.r_1.length())
+	vitesse_1.text = format_scientifique(lune.v_1.length())
+	rayon_2.text = format_scientifique(lune.r_2.length())
+	vitesse_2.text = format_scientifique(lune.v_2.length())
 
 
 func changer_mode_pause(mode_pause : bool) -> void:
@@ -23,7 +23,7 @@ func changer_mode_pause(mode_pause : bool) -> void:
 	
 	Paramètre :
 	etat_pause -- est-ce que la simulation est en pause ou non """
-	simulation.mettre_en_pause(mode_pause)
+	lune.mettre_en_pause(mode_pause)
 
 
 func format_scientifique(valeur : float) -> String:

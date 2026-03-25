@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Lune
 
 @export_group("Paramètre de conversion simulation")
 @export var min_distance_simulee : float

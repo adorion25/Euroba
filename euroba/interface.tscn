@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://d03a04mh24msu" path="res://interface.gd" id="1_kyn48"]
 [ext_resource type="Script" uid="uid://blopcvwejs7mq" path="res://BoutonPause.gd" id="2_oi7g3"]
 
-[node name="Interface" type="Control" unique_id=1115889947]
+[node name="Interface" type="Control" unique_id=1115889947 node_paths=PackedStringArray("rayon_1", "vitesse_1", "rayon_2", "vitesse_2")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kyn48")
+rayon_1 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/rayon_1")
+vitesse_1 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/vitesse_1")
+rayon_2 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/rayon_2")
+vitesse_2 = NodePath("VBoxContainer/PanelContainer Données/MarginContainer/GridContainer/vitesse_2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1837051428]
 layout_mode = 0
@@ -32,10 +36,11 @@ text = "Synchronisation orbitale d'Europa"
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=10007798]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335]
+[node name="Button" type="Button" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335 node_paths=PackedStringArray("interface")]
 layout_mode = 2
 text = "Pause"
 script = ExtResource("2_oi7g3")
+interface = NodePath("../../../../..")
 
 [node name="PanelContainer Données" type="PanelContainer" parent="VBoxContainer" unique_id=1098302464]
 layout_mode = 2
@@ -45,3 +50,49 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer Données/MarginContainer" unique_id=752489414]
 layout_mode = 2
+columns = 3
+
+[node name="Europa" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=497748557]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Europa"
+
+[node name="Rayon" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=196952794]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Rayon"
+
+[node name="Vitesse" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=1353402173]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Vitesse"
+
+[node name="Point 1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=452391967]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Point rouge"
+
+[node name="rayon_1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=2109086870]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "rayon1"
+
+[node name="vitesse_1" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=1424470352]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "vitesse1"
+
+[node name="Point 2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=957746302]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Point bleu"
+
+[node name="rayon_2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=1228715288]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "rayon2"
+
+[node name="vitesse_2" type="Label" parent="VBoxContainer/PanelContainer Données/MarginContainer/GridContainer" unique_id=919499037]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "vitesse2"

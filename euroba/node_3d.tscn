@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnpcxbieyarvj"]
 
 [ext_resource type="Script" uid="uid://bl7lqsf2un6ea" path="res://Lune.gd" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://sih1ldeg6fm2" path="res://interface.tscn" id="2_noarx"]
 
 [sub_resource type="Environment" id="Environment_4xowi"]
 background_mode = 1
@@ -85,3 +86,8 @@ shape = SubResource("SphereShape3D_r3fl7")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_jka67")
 surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=996496170]
+
+[node name="Interface" parent="CanvasLayer" unique_id=1115889947 node_paths=PackedStringArray("lune") instance=ExtResource("2_noarx")]
+lune = NodePath("../../Europe 1")
