@@ -48,7 +48,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052 node_paths=PackedStringArray("europe_1", "europe_2")]
+[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052 node_paths=PackedStringArray("europe_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 script = ExtResource("1_a202f")
 min_distance_simulee = 5.0
@@ -58,12 +58,9 @@ max_distance_reelle = 700000000.0
 masse_centre_rotation = 1.989e+27
 masse_corps = 4.8e+22
 periode_relative = 8.0
-rayon_initial_1 = 652377000.0
-vitesse_initiale_1 = 10664.75
-rayon_initial_2 = 677347000.0
-vitesse_initiale_2 = 17741.25
+rayon_initial = 639892000.0
+vitesse_initiale = 10644.75
 etapes_calcul_par_ecran = 1000
-europe_1 = NodePath(".")
 europe_2 = NodePath("../Europe 2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 1" unique_id=1391428646]
@@ -75,8 +72,20 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_noarx")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
 
-[node name="Europe 2" type="RigidBody3D" parent="." unique_id=1773264772]
+[node name="Europe 2" type="RigidBody3D" parent="." unique_id=1773264772 node_paths=PackedStringArray("europe_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+script = ExtResource("1_a202f")
+min_distance_simulee = 5.0
+max_distance_simulee = 15.0
+min_distance_reelle = 600000000.0
+max_distance_reelle = 700000000.0
+masse_centre_rotation = 1.989e+27
+masse_corps = 4.8e+22
+periode_relative = 8.0
+rayon_initial = 689832000.0
+vitesse_initiale = 17741.25
+etapes_calcul_par_ecran = 1000
+europe_2 = NodePath("../Europe 1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 2" unique_id=1569230407]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

@@ -12,13 +12,9 @@ class_name Lune
 @export var masse_corps : float
 @export var periode_relative : float
 
-@export_group("Point 1 d'Europe")
-@export var rayon_initial_1 : float
-@export var vitesse_initiale_1 : float
-
-@export_group("Point 2 d'Europe")
-@export var rayon_initial_2 : float
-@export var vitesse_initiale_2 : float
+@export_group("Point d'Europe")
+@export var rayon_initial : float
+@export var vitesse_initiale : float
 
 @export_group("Paramètres d'Euler")
 @export var etapes_calcul_par_ecran : int
@@ -31,8 +27,9 @@ var r_1 : Vector3
 var v_1 : Vector3
 var r_2 : Vector3
 var v_2 : Vector3
+var a_1 : Vector3
 var periode : float = 299.819e3
-@export var europe_1 : RigidBody3D
+
 @export var europe_2 : RigidBody3D
 
 var pause : bool
@@ -42,10 +39,9 @@ var echelle_temps : float = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	r_1 = rayon_initial_1 * Vector3(1, 0, 0)
-	v_1 = vitesse_initiale_1 * Vector3(0, 0, 1)
-	r_2 = rayon_initial_2 * Vector3(1, 0, 0)
-	v_2 = vitesse_initiale_2 * Vector3(0, 0, 1)
+	r_1 = rayon_initial * Vector3(1, 0, 0)
+	v_1 = vitesse_initiale * Vector3(0, 0, 1)
+	
 	pause = false
 
 	
@@ -53,10 +49,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if pause :
 		return
+	
+	r_2 = europe_2.r_1
+	v_2 = europe_2.v_1
 	appliquer_euler(delta*echelle_temps)
 
-	europe_1.position = conv_position_reelle_a_simulee(r_1)
-	europe_2.position = conv_position_reelle_a_simulee(r_2)
+	position = conv_position_reelle_a_simulee(r_1)
 	
 func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	"""Effectue la conversion d'une position réelle à une position de l'espace 
@@ -89,17 +87,14 @@ func appliquer_euler(temps_dernier_ecran : float) -> void:
 	var nb_periode = temps_dernier_ecran * periode / periode_relative
 	var h = nb_periode / etapes_calcul_par_ecran
 	for i in range(etapes_calcul_par_ecran):
-		var force_gravitationnelle_1 = -G * (masse_corps / 2 * masse_centre_rotation) / r_1.length()**3 * r_1
-		var force_gravitationnelle_2 = -G * (masse_corps / 2 * masse_centre_rotation) / r_2.length()**3 * r_2
+		
+		var force_gravitationnelle = -G * (masse_corps / 2 * masse_centre_rotation) / r_1.length()**3 * r_1
 		var force_ressort = elasticite * ((r_2 - r_1).length() - distance_equilibre) * (r_2 - r_1).normalized()
 		var force_frottement = coeff_dissipation * (v_2 - v_1)
 		
-		var a_1 = (force_gravitationnelle_1 + force_ressort + force_frottement) / (masse_corps / 2)
-		var a_2 = (force_gravitationnelle_2 - force_ressort - force_frottement) / (masse_corps / 2)
-		v_2 += h * a_2
+		a_1 = (force_gravitationnelle + force_ressort + force_frottement) / (masse_corps / 2)
 		v_1 += h * a_1
 		r_1 += h * v_1
-		r_2 += h * v_2
 		
 		
 func mettre_en_pause(mode_pause: bool) -> void:
