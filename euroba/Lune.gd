@@ -106,5 +106,6 @@ func mettre_en_pause(mode_pause: bool) -> void:
 	"""Change le mode de la simulation (pause/"play")
 	
 	Parametre :
-	mode_pause -- mode de pause de la simualtion"""
+	mode_pause -- booléen contenant True si la simulation est en pause.
+	"""
 	pause = mode_pause
