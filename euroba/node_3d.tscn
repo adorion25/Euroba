@@ -98,5 +98,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=996496170]
 
-[node name="Interface" parent="CanvasLayer" unique_id=1115889947 node_paths=PackedStringArray("lune") instance=ExtResource("2_noarx")]
-lune = NodePath("../../Europe 1")
+[node name="Interface" parent="CanvasLayer" unique_id=1115889947 node_paths=PackedStringArray("lune_1", "lune_2") instance=ExtResource("2_noarx")]
+lune_1 = NodePath("../../Europe 1")
+lune_2 = NodePath("../../Europe 2")

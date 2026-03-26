@@ -2,7 +2,8 @@ extends Control
 class_name Interface
 
 @export_group("Simulation")
-@export var lune : Lune
+@export var lune_1 : Lune
+@export var lune_2 : Lune
 
 @export_group("Textes")
 @export var rayon_1 : Label
@@ -17,13 +18,13 @@ class_name Interface
 
 
 func _process(delta:float) -> void:
-	rayon_1.text = format_scientifique(lune.r_1.length())
-	vitesse_1.text = format_scientifique(lune.v_1.length())
-	rayon_2.text = format_scientifique(lune.r_2.length())
-	vitesse_2.text = format_scientifique(lune.v_2.length())
-	distance.text = format_scientifique(abs(lune.r_1.length() - lune.r_2.length()))
+	rayon_1.text = format_scientifique(lune_1.r_1.length())
+	vitesse_1.text = format_scientifique(lune_1.v_1.length())
+	rayon_2.text = format_scientifique(lune_2.r_2.length())
+	vitesse_2.text = format_scientifique(lune_2.v_2.length())
+	distance.text = format_scientifique(abs(lune_1.r_1.length() - lune_2.r_1.length()))
 	
-	if lune.r_1.length() < lune.r_2.length():
+	if lune_1.r_1.length() < lune_2.r_1.length():
 		point.text = "Point rouge"
 	else:
 		point.text = "Point bleu"
@@ -33,7 +34,8 @@ func changer_mode_pause(mode_pause : bool) -> void:
 	
 	Paramètre :
 	etat_pause -- est-ce que la simulation est en pause ou non """
-	lune.mettre_en_pause(mode_pause)
+	lune_1.mettre_en_pause(mode_pause)
+	lune_2.mettre_en_pause(mode_pause)
 
 
 func format_scientifique(valeur : float) -> String:
@@ -59,5 +61,6 @@ func _on_h_slider_value_changed(valeur: float) -> void:
 	Retour:
 	une chaîne de caractères représentant ce nombre
 	"""
-	lune.echelle_temps = valeur
+	lune_1.echelle_temps = valeur
+	lune_2.echelle_temps = valeur
 	vitesse_simulation.text = "x" + "%.1f" % valeur
