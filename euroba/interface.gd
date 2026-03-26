@@ -20,8 +20,8 @@ class_name Interface
 func _process(delta:float) -> void:
 	rayon_1.text = format_scientifique(lune_1.r_1.length())
 	vitesse_1.text = format_scientifique(lune_1.v_1.length())
-	rayon_2.text = format_scientifique(lune_2.r_2.length())
-	vitesse_2.text = format_scientifique(lune_2.v_2.length())
+	rayon_2.text = format_scientifique(lune_2.r_1.length())
+	vitesse_2.text = format_scientifique(lune_2.v_1.length())
 	distance.text = format_scientifique(abs(lune_1.r_1.length() - lune_2.r_1.length()))
 	
 	if lune_1.r_1.length() < lune_2.r_1.length():
