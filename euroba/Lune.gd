@@ -29,7 +29,7 @@ var r_2 : Vector3
 var v_2 : Vector3
 var a_1 : Vector3
 var periode : float = 299.819e3
-
+var temps_ecoule : float
 @export var europe_2 : RigidBody3D
 
 var pause : bool
@@ -50,6 +50,10 @@ func _process(delta: float) -> void:
 	if pause :
 		return
 	
+	temps_ecoule += delta 
+	if temps_ecoule >= 20 * periode_relative:
+		return
+		
 	r_2 = europe_2.r_1
 	v_2 = europe_2.v_1
 	appliquer_euler(delta*echelle_temps)
